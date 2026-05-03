@@ -14,7 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { serviceDetailStyles, iconSize } from "../assets/dummyStyles";
 import placeholderService from "../assets/placeholder-service.svg";
 
-const DEFAULT_HOST = "http://localhost:5000".replace(/\/$/, "");
+const DEFAULT_HOST = (import.meta.env.VITE_API_URL || "http://localhost:5000").replace(/\/$/, "");
 
 export default function ServiceDetail() {
   const { id } = useParams();

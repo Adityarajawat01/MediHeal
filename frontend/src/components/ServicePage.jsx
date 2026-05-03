@@ -109,7 +109,7 @@ const ServiceCard = ({ service }) => {
 };
 
 export default function ServicePage({ apiBase, previewCount = 9999 }) {
-  const API_BASE = apiBase || "http://localhost:5000";
+  const API_BASE = apiBase || import.meta.env.VITE_API_URL || "http://localhost:5000";
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
