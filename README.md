@@ -1,97 +1,62 @@
-﻿# MediHeal
+# MediHeal
 
-MediHeal is a full-stack healthcare appointment platform where patients can browse doctors and medical services, book appointments, and pay online. The project includes a patient-facing website, an admin dashboard, doctor appointment management, and a Node.js API backed by MongoDB.
+MediHeal is a full-stack healthcare appointment platform where users can explore doctors and medical services, book appointments, and make online payments.
+
+The project includes:
+- Patient website
+- Admin dashboard
+- Doctor dashboard
+- Online appointment system
+- Stripe payment integration
+
+Built using the MERN stack with Clerk authentication and Cloudinary image uploads.
+
+---
 
 ## Features
 
-- Patient website for browsing doctors and healthcare services
-- Doctor detail pages with schedules, fees, availability, and profile information
-- Doctor appointment booking with cash or online payment options
-- Service appointment booking for medical services and packages
-- Stripe Checkout integration for online payments
-- Clerk authentication for protected user/admin flows
-- Admin dashboard for managing doctors, services, appointments, and service bookings
-- Doctor dashboard for viewing appointments and editing profile details
-- Cloudinary image upload support for doctors and services
-- MongoDB models for doctors, services, appointments, and service appointments
+- Browse doctors and healthcare services
+- View doctor profiles, fees, and availability
+- Book doctor appointments
+- Book healthcare services/packages
+- Pay online using Stripe
+- Admin dashboard for managing doctors and services
+- Doctor dashboard for managing appointments
+- Authentication using Clerk
+- Cloudinary image uploads
+- MongoDB database integration
+
+---
 
 ## Tech Stack
 
-**Frontend**
-- React
+### Frontend
+- React.js
 - Vite
-- React Router
 - Tailwind CSS
+- React Router DOM
 - Clerk
-- Axios
-- Lucide React / React Icons
 
-**Backend**
+### Backend
 - Node.js
 - Express.js
 - MongoDB
 - Mongoose
-- Clerk Express
 - Stripe
 - Cloudinary
-- Multer
 
-## Project Structure
+---
 
-```text
+## Folder Structure
+
+```bash
 MediHeal/
-├── admin/       # Admin dashboard React app
-├── backend/     # Express API, database models, controllers, and routes
-├── frontend/    # Patient and doctor-facing React app
-└── README.md
+├── admin/
+├── backend/
+├── frontend/
 ```
 
-## Getting Started
-
-### Prerequisites
-
-Make sure you have the following installed:
-
-- Node.js
-- npm
-- MongoDB Atlas account or local MongoDB database
-- Clerk account
-- Stripe account
-- Cloudinary account
-
-## Environment Variables
-
-Create a `.env` file inside the `backend` folder:
-
-```env
-CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
-CLOUDINARY_CLOUD_NAME=
-CLOUDINARY_API_KEY=
-CLOUDINARY_API_SECRET=
-JWT_SECRET=
-STRIPE_SECRET_KEY=
-MONGODB_URI=
-FRONTEND_URL=http://localhost:5173
-ADMIN_URL=http://localhost:5174
-MAJOR_ADMIN_ID=
-```
-
-Create a `.env` file inside the `frontend` folder:
-
-```env
-VITE_CLERK_PUBLISHABLE_KEY=
-VITE_API_URL=http://localhost:5000
-```
-
-Create a `.env` file inside the `admin` folder:
-
-```env
-VITE_CLERK_PUBLISHABLE_KEY=
-VITE_API_URL=http://localhost:5000
-```
-
-You can also copy the provided `.env.example` files in each folder and fill in your own values.
+---
 
 ## Installation
 
@@ -102,173 +67,95 @@ git clone https://github.com/your-username/MediHeal.git
 cd MediHeal
 ```
 
-Install backend dependencies:
+Install dependencies:
 
 ```bash
 cd backend
 npm install
-```
 
-Install frontend dependencies:
-
-```bash
 cd ../frontend
 npm install
-```
 
-Install admin dependencies:
-
-```bash
 cd ../admin
 npm install
 ```
 
-## Run Locally
+---
 
-Start the backend server:
+## Environment Variables
 
-```bash
-cd backend
-npm run dev
+Create a `.env` file inside the backend folder:
+
+```env
+CLERK_SECRET_KEY=
+CLOUDINARY_CLOUD_NAME=
+STRIPE_SECRET_KEY=
+MONGODB_URI=
+JWT_SECRET=
 ```
 
-The backend runs on:
+Frontend and admin:
 
-```text
-http://localhost:5000
+```env
+VITE_API_URL=http://localhost:5000
+VITE_CLERK_PUBLISHABLE_KEY=
 ```
 
-Start the frontend app in a new terminal:
+---
 
-```bash
-cd frontend
-npm run dev
-```
-
-The frontend usually runs on:
-
-```text
-http://localhost:5173
-```
-
-Start the admin app in another terminal:
-
-```bash
-cd admin
-npm run dev
-```
-
-The admin app usually runs on:
-
-```text
-http://localhost:5174
-```
-
-## Available Scripts
-
-### Backend
-
-```bash
-npm run dev
-npm start
-```
-
-### Frontend
-
-```bash
-npm run dev
-npm run build
-npm run preview
-npm run lint
-```
-
-### Admin
-
-```bash
-npm run dev
-npm run build
-npm run preview
-npm run lint
-```
-
-## API Routes
-
-Main backend route groups:
-
-```text
-GET/POST/PUT/DELETE  /api/doctors
-GET/POST/PUT/DELETE  /api/services
-GET/POST/PUT         /api/appointments
-GET/POST/PUT         /api/service-appointments
-```
-
-Payment confirmation routes:
-
-```text
-GET /api/appointments/confirm
-GET /api/service-appointments/confirm
-```
-
-## Important Pages
-
-### Frontend
-
-```text
-/                         Home
-/doctors                  Doctors list
-/doctors/:id              Doctor details
-/services                 Services list
-/services/:id             Service details
-/appointments             Patient appointments
-/doctor-admin/login       Doctor login
-/doctor-admin/:id         Doctor dashboard
-```
-
-### Admin
-
-```text
-/                         Admin landing/login page
-/h                        Admin dashboard
-/add                      Add doctor
-/list                     Doctor list
-/appointments             Doctor appointments
-/service-dashboard        Service dashboard
-/add-service              Add service
-/list-service             Service list
-/service-appointments     Service appointments
-```
-
-## Build For Production
-
-Build frontend:
-
-```bash
-cd frontend
-npm run build
-```
-
-Build admin:
-
-```bash
-cd admin
-npm run build
-```
+## Run Project
 
 Start backend:
 
 ```bash
 cd backend
-npm start
+npm run dev
 ```
 
-## Notes
+Start frontend:
 
-- Add your deployed frontend and admin URLs to `FRONTEND_URL` and `ADMIN_URL` in the backend `.env`.
-- Configure the same Clerk publishable key in both frontend apps.
-- Stripe payments require a valid `STRIPE_SECRET_KEY`.
-- Image upload features require valid Cloudinary credentials.
-- MongoDB must be connected through `MONGODB_URI` before using the app.
+```bash
+cd frontend
+npm run dev
+```
+
+Start admin panel:
+
+```bash
+cd admin
+npm run dev
+```
+
+---
+
+## Main Modules
+
+### Patient Side
+- Browse doctors
+- Book appointments
+- Online payments
+- View appointments
+
+### Doctor Dashboard
+- Manage appointments
+- Update profile details
+
+### Admin Dashboard
+- Manage doctors
+- Manage services
+- Track bookings
+
+---
+
+## Future Improvements
+
+- Video consultation support
+- Prescription management
+- Appointment reminders
+- Medical report uploads
+
+---
 
 ## Author
 
-MediHeal healthcare appointment platform.
+Aditya Singh
